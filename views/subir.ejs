@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir trabajo - CEO Tecnología</title>
+  <link rel="icon" href="/img/logo.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="brand">
+        <img src="/img/logo.jpeg" alt="CEO Tecnología" class="brand-logo">
+      </a>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <div class="container form-container">
+      <h2>Subir trabajo realizado</h2>
+      <p class="section-subtitle">Cargá una foto de una reparación o instalación que hiciste</p>
+
+      <% if (ok) { %>
+        <div class="aviso aviso-ok">✅ Trabajo subido correctamente. <a href="/#trabajos">Verlo en la página</a></div>
+      <% } %>
+      <% if (error) { %>
+        <div class="aviso aviso-error">⚠️ <%= error %></div>
+      <% } %>
+
+      <form action="/subir" method="POST" enctype="multipart/form-data" class="form-trabajo">
+        <label>Título</label>
+        <input type="text" name="titulo" placeholder="Ej: Reparación de notebook" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" rows="3" placeholder="Contá brevemente qué hiciste"></textarea>
+
+        <label>Imagen (jpg, png o webp, sin el logo)</label>
+        <input type="file" name="imagen" accept=".jpg,.jpeg,.png,.webp" required>
+
+        <label>Clave</label>
+        <input type="password" name="clave" placeholder="Clave para subir" required>
+
+        <button type="submit" class="btn-primary">Subir</button>
+      </form>
+    </div>
+  </section>
+
+</body>
+</html>

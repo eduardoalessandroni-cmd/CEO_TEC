@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CEO Tecnología</title>
+  <link rel="icon" href="/img/logo.jpeg" type="image/jpeg">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="brand">
+        <img src="/img/logo.jpeg" alt="CEO Tecnología" class="brand-logo">
+      </a>
+      <nav class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#trabajos">Trabajos</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="inicio" class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>CEO <span>Tecnología</span></h1>
+        <p>Service técnico de PC, notebooks e impresoras a domicilio, y sistemas a medida para pequeños comercios como bares y kioscos.</p>
+        <a href="#contacto" class="btn-primary">Pedir un presupuesto</a>
+      </div>
+      <div class="hero-logo">
+        <img src="/img/logo.jpeg" alt="Logo CEO Tecnología">
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="servicios">
+    <div class="container">
+      <h2>Nuestros Servicios</h2>
+      <p class="section-subtitle">Service técnico y sistemas simples, pensados para vos</p>
+      <div class="grid-servicios">
+        <% servicios.forEach(function(s) { %>
+          <div class="card-servicio">
+            <div class="icono"><%= s.icono %></div>
+            <h3><%= s.titulo %></h3>
+            <p><%= s.descripcion %></p>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" class="proyectos">
+    <div class="container">
+      <h2>Nuestros Sistemas</h2>
+      <p class="section-subtitle">Sistemas a medida que hicimos, mirá cómo funcionan por dentro</p>
+      <div class="grid-proyectos">
+        <% proyectos.forEach(function(p) { %>
+          <div class="card-proyecto">
+            <span class="categoria"><%= p.categoria %></span>
+            <h3><%= p.nombre %></h3>
+            <p><%= p.descripcion %></p>
+
+            <% if (p.capturas.length > 0) { %>
+              <div class="capturas">
+                <% p.capturas.forEach(function(src, i) { %>
+                  <img src="<%= src %>" alt="<%= p.nombre %> - captura <%= i + 1 %>"
+                       class="captura-thumb"
+                       data-grupo="<%= p.carpeta %>" data-index="<%= i %>">
+                <% }); %>
+              </div>
+            <% } else { %>
+              <p class="sin-capturas">Capturas próximamente.</p>
+            <% } %>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+
+    <div id="lightbox" class="lightbox" hidden>
+      <button class="lightbox-cerrar" id="lightbox-cerrar" aria-label="Cerrar">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Anterior">‹</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Siguiente">›</button>
+    </div>
+  </section>
+
+  <section id="trabajos" class="trabajos">
+    <div class="container">
+      <h2>Trabajos Realizados</h2>
+      <p class="section-subtitle">Reparaciones e instalaciones que hicimos</p>
+
+      <% if (trabajos.length === 0) { %>
+        <p class="sin-trabajos">Todavía no hay fotos cargadas.</p>
+      <% } else { %>
+        <div class="grid-trabajos">
+          <% trabajos.forEach(function(t) { %>
+            <div class="card-trabajo">
+              <img src="<%= t.imagen %>" alt="<%= t.titulo %>">
+              <div class="card-trabajo-info">
+                <h3><%= t.titulo %></h3>
+                <% if (t.descripcion) { %><p><%= t.descripcion %></p><% } %>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+  <section id="contacto" class="contacto">
+    <div class="container contacto-inner">
+      <h2>Hablemos de tu proyecto</h2>
+      <p>Escríbenos y te ayudamos a encontrar la mejor solución tecnológica.</p>
+      <div class="contacto-datos">
+        <a href="https://wa.me/5493537658652?text=Hola,%20quiero%20consultar%20sobre%20sus%20servicios" target="_blank" rel="noopener">📱 WhatsApp</a>
+        <a href="https://instagram.com/ceo_tecnologia_av" target="_blank" rel="noopener">📷 Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <img src="/img/logo.jpeg" alt="CEO Tecnología" class="footer-logo">
+      <p>&copy; <%= anio %> CEO Tecnología. Todos los derechos reservados.</p>
+      <a href="/subir" class="footer-admin">Subir trabajo</a>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
